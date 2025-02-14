@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Room Booking</title>
+    <link rel="stylesheet" href="roombook.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Hotel Room Booking</h2>
+    <form id="bookingForm">
+        <label>Guest Name:</label>
+        <input type="text" id="guestName" required>
+        
+        <label>Phone Number:</label>
+        <input type="text" id="phoneNumber" required>
+
+        <label>Room Type:</label>
+        <select id="roomType">
+            <option value="Single Room">Single Room</option>
+            <option value="Double Room">Double Room</option>
+            <option value="Suite">Suite</option>
+        </select>
+        <label>Room Type:</label>
+        <select id="roomType">
+            <option value="#" placeholder="Select">AC</option>
+            <option value="#" placeholder="Select">Non AC</option>
+        </select>
+
+        <label>Check-in Date:</label>
+        <input type="date" id="checkInDate" required>
+
+        <label>Check-out Date:</label>
+        <input type="date" id="checkOutDate" required>
+
+        <button type="button" class="btn book-btn" onclick="bookRoom()">Book Room</button>
+        <button type="reset" class="btn clear-btn">Clear Fields</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Guest Name</th>
+                <th>Phone</th>
+                <th>Room Type</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+            </tr>
+        </thead>
+        <tbody id="bookingList"></tbody>
+    </table>
+</div>
+
+<script>
+    function bookRoom() {
+        let guestName = document.getElementById("guestName").value;
+        let phoneNumber = document.getElementById("phoneNumber").value;
+        let roomType = document.getElementById("roomType").value;
+        let checkInDate = document.getElementById("checkInDate").value;
+        let checkOutDate = document.getElementById("checkOutDate").value;
+
+        if (guestName && phoneNumber && roomType && checkInDate && checkOutDate) {
+            let table = document.getElementById("bookingList");
+            let newRow = table.insertRow();
+
+            newRow.innerHTML = `<td>${guestName}</td>
+                                <td>${phoneNumber}</td>
+                                <td>${roomType}</td>
+                                <td>${checkInDate}</td>
+                                <td>${checkOutDate}</td>`;
+
+            document.getElementById("bookingForm").reset();
+        } else {
+            alert("Please fill all fields");
+        }
+    }
+</script>
+
+</body>
+</html>

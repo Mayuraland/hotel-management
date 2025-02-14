@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Clients</title>
+    <link rel="stylesheet" href="Clint.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Manage Clients</h2>
+        <form id="clientForm">
+            <label>ID:</label>
+            <input type="text" id="id" required>
+            <label>First Name:</label>
+            <input type="text" id="firstName" required>
+            <label>Last Name:</label>
+            <input type="text" id="lastName" required>
+            <label>Phone No:</label>
+            <input type="text" id="phone" required>
+            <label>Email:</label>
+            <input type="email" id="email" required>
+            <button type="button" class="btn add-btn" onclick="addClient()">Add New Client</button>
+            <button type="button" class="btn edit-btn">Edit</button>
+            <button type="button" class="btn remove-btn">Remove</button>
+            <button type="reset" class="btn clear-btn">Clear Fields</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="clientList">
+                <tr>
+                    <td>1</td>
+                    <td>Mayur</td>
+                    <td>Valand</td>
+                    <td>9898******</td>
+                    <td>Mayur@gmail</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function addClient() {
+            let id = document.getElementById("id").value;
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+
+            if (id && firstName && lastName && phone && email) {
+                let table = document.getElementById("clientList");
+                let newRow = table.insertRow();
+
+                newRow.innerHTML = `<td>${id}</td>
+                                <td>${firstName}</td>
+                                <td>${lastName}</td>
+                                <td>${phone}</td>
+                                <td>${email}</td>`;
+
+                document.getElementById("clientForm").reset();
+            } else {
+                alert("Please fill all fields");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
